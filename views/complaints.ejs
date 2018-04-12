@@ -1,0 +1,69 @@
+
+<style>
+	#page-wrapper {
+
+		padding-left: 8%;
+		padding-bottom: 25%;
+		padding-top:5%;
+	}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		transition: 0.3s;
+		width: 27%;
+		height:20%;
+		word-wrap: break-word;
+		border-radius: 5px;
+		float: left;
+		margin: 1%;
+		background-color: #ffccff;
+		padding: 1%;
+	}
+
+	.card:hover {
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	img {
+		border-radius: 5px 5px 0 0;
+	}
+
+	.container {
+		padding: 2px 16px;
+	}
+
+	#button {
+		padding-left: 20%;
+		background-color: white;
+		padding-top: 2%;
+	}
+</style>
+
+
+
+
+
+
+	<div id="page-wrapper">
+
+
+			</br>
+			</br>
+			<% j=0 %>
+				<% complaints.forEach(function(complaint){ j++; %>
+					<div class="card" ng-controller="myCtrl">
+						<div class="container" >
+							<p id="<%= j %>m">
+								<%= complaint.complaint_id %>
+							</p>
+							<h4><b><%= complaint.date %></b></h4>
+							<h4><%= complaint.device_type %></h4>
+							<small id="<%= j %>"></small>
+
+							<button ng-click='myFunc("<%= complaint.complaint_id %>")'>view details</button>
+							<button ng-click='myFuncDelete("<%= complaint.complaint_id %>")'>Delete Complaint</button>
+						</div>
+					</div>
+
+					<% }) %>
+				</div>

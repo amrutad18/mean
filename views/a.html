@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Register your complaints here</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="css/one-page-wonder.min.css" rel="stylesheet">
+		<script type="text/javascript" src="/colors.js"></script>
+
+</head>
+<style>
+	#page-wrapper {
+
+		padding-left: 8%;
+		padding-bottom: 25%;
+		padding-top:5%;
+	}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		transition: 0.3s;
+		width: 27%;
+		height:20%;
+		word-wrap: break-word;
+		border-radius: 5px;
+		float: left;
+		margin: 1%;
+		background-color: x;
+		padding: 1%;
+	}
+
+	.card:hover {
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	img {
+		border-radius: 5px 5px 0 0;
+	}
+
+	.container {
+		padding: 2px 16px;
+	}
+
+	#button {
+		padding-left: 20%;
+		background-color: white;
+		padding-top: 2%;
+	}
+</style>
+
+
+<body ng-app="myApp">
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">My profile</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/mycomplaints">My Complaints</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Log Out</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/profile">Home</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="page-wrapper">
+
+
+			</br>
+			</br>
+			<% j=0 %>
+				<% complaints.forEach(function(complaint){ j++; %>
+					<div class="card" ng-controller="myCtrl">
+						<div class="container" >
+							<p id="<%= j %>m">
+								<%= complaint.complaint_id %>
+							</p>
+							<h4><b><%= complaint.date %></b></h4>
+							<h4><%= complaint.device_type %></h4>
+							<small id="<%= j %>"></small>
+
+							<button ng-click='myFunc("<%= complaint.complaint_id %>")'>view details</button>
+						</div>
+					</div>
+
+					<% }) %>
+				</div>
+
+				<script>
+	angular.module('myApp', [])
+	  .controller('myCtrl', ['$scope', function($scope) {
+	    //$scope.count = 0;
+	    $scope.myFunc = function(complaint_id) {
+
+				var url = '/visual';
+				var form = $('<form action="' + url + '" method="post">' +
+					'<input type="hidden" name="complaint_id" value="' + complaint_id + '" />' +
+					'</form>');
+				$('body').append(form);
+				form.submit();
+
+	    };
+	  }]);
+</script>
+
+
+						<div id="span"></div>
+						<script>
+							function x() {
+								var d = document.getElementsByClassName("card");
+								for (var i = 0; i < <%= j %>; i++) {
+									var num = Math.floor(Math.random() * (colors.length - 1));
+									//console.log(num);
+									//console.log(colors);
+									d[i].style.backgroundColor = colors[num];
+								}
+							}
+
+							x();
+						</script>
+
+</body>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</html>

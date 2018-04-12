@@ -1,0 +1,65 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+
+<head>
+	<title>User Authentication</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<!-- load bootstrap css -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<!-- load fontawesome -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+	<style>
+		body {
+			padding-top: 80px;
+		}
+	</style>
+</head>
+
+<body ng-app="myApp" style="background: #ffccff;">
+	<div class="container" >
+
+		<div class="text-center">
+			<% if (message.length > 0) { %>
+				<div class="alert alert-danger"><%= message %></div>
+			<% } %>
+
+
+
+			<h1><span class="fa fa-lock"></span> User Authentication</h1>
+
+			<p>Login or Register with:</p>
+
+			<a href="#!login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+			<a href="#!signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+		</div>
+
+		<div ng-view></div>
+		<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "/index"
+    })
+    .when("/login", {
+        templateUrl : "/login"
+    })
+    .when("/signup", {
+        templateUrl : "/signup"
+    })
+
+});
+
+
+
+
+</script>
+
+
+	</div>
+</body>
+
+</html>

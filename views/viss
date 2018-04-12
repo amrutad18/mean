@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Register your complaints here</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="css/one-page-wonder.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+
+
+		<script type="text/javascript" src="/colors.js"></script>
+
+
+</head>
+<style>
+	#page-wrapper {
+
+		padding-left: 8%;
+		padding-bottom: 5%;
+	}
+
+	.container {
+		padding: 2px 16px;
+		font-size:150%;
+	}
+
+	#button {
+		padding-left: 20%;
+		background-color: white;
+		padding-top: 2%;
+	}
+</style>
+
+
+<body ng-app="myApp">
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">My profile</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/logout">Log Out</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/profile">Home</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<header class="masthead text-center text-white" style="padding-top:10%">
+		<h1 style="padding-left:70px"><span class="fa fa-sign-in"></span>Complaint details</h1>
+		<div class="masthead-content">
+			<div id="page-wrapper">
+					</br>
+					</br>
+					<div class="container" >
+
+						<p id="id" <label>Complaint ID:&nbsp;&nbsp;</label><%= complaint_id %> </p>
+					</div>
+					<div class="container" >
+
+						<p id="id"> <label>Time of complaint:&nbsp;&nbsp;</label><%= time %>
+						</p>
+					</div>
+					<div class="container" >
+
+						<p id="id"><label>Product Type:&nbsp;&nbsp;</label>
+							<%= device_type %>
+						</p>
+					</div>
+					<div class="container" >
+
+						<p id="id"><label>Model Number:&nbsp;&nbsp;</label>
+							<%= device_no %>
+						</p>
+					</div>
+					<div class="container" >
+
+						<p id="id"> <label>Date of purchase:&nbsp;&nbsp;</label> <%= date %>
+						</p>
+					</div>
+
+
+					<div class="container" >
+
+						<p id="id"> <label>Complaint Description:&nbsp;&nbsp;</label><%= description %>
+						</p>
+					</div>
+
+
+				</div>
+
+
+		</div>
+
+	</header>
+
+
+
+
+
+						<div id="span"></div>
+
+
+</body>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</html>

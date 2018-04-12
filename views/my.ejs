@@ -1,0 +1,75 @@
+
+
+<style>
+	#page-wrapper {
+
+		padding-left: 8%;
+		padding-bottom: 10%;
+	}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		transition: 0.3s;
+		width: 27%;
+		height:20%;
+		word-wrap: break-word;
+		border-radius: 5px;
+		float: left;
+		margin: 1%;
+		background-color: x;
+		padding: 1%;
+	}
+
+	.card:hover {
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	img {
+		border-radius: 5px 5px 0 0;
+	}
+
+	.container {
+		padding: 2px 16px;
+		font-size:150%;
+	}
+
+	#button {
+		padding-left: 20%;
+		background-color: white;
+		padding-top: 2%;
+	}
+</style>
+
+
+
+
+	<header class="masthead text-center text-white" style="padding-top:10%">
+		<div class="masthead-content">
+			<div id="page-wrapper" style="padding-right:4%">
+
+				<h1><span class="fa fa-sign-in"></span> Edit your profile!</h1>
+					</br>
+					</br>
+					<form action="/edit" method="post">
+					<div class="container" >
+
+						<p ><label>Email Id:&nbsp;&nbsp;</label><%= user.local.email%> </p>
+					</div>
+					<div class="container" >
+
+						<label>Username:&nbsp;&nbsp;</label>
+            <input type="text" value= '<%= user.local.username%>' name="username">
+						<input type="hidden" value="<%=user.local.email%>" name="email">
+
+					</div>
+					<br>
+					<br>
+					<div class="container" >
+						<button type="submit" class="btn btn-warning btn-lg btn btn-primary btn-xl rounded-pill mt-5">Save Changes!</button>
+					</div>
+				</form>
+
+
+		</div>
+
+	</header>

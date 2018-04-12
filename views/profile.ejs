@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Register your complaints here</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/colors.js"></script>
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/one-page-wonder.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+
+  </head>
+
+  <body ng-app="myApp">
+
+    <!-- Navigation -->
+    <% j=0%>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#!my">My profile</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#!mycomplaints">My Complaints</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div ng-view>
+    </div>
+		<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "/profileview"
+    })
+    .when("/my", {
+        templateUrl : "/my"
+    })
+    .when("profile", {
+        templateUrl : "/profile"
+    })
+    .when("/mycomplaints", {
+        templateUrl : "/mycomplaints",
+        controller: "complaintCtrl"
+    })
+
+
+});
+app.controller('complaintCtrl', function($scope, $route){
+  //alert('test');
+
+  function x() {
+    var d = document.getElementsByClassName("card");
+    for (var i = 0; i < <%= j %>; i++) {
+      var num = Math.floor(Math.random() * (colors.length - 1));
+      d[i].style.backgroundColor = colors[num];
+    }
+  }
+
+  x();
+});
+app.controller('myCtrl',function($scope,$route) {
+    //$scope.count = 0;
+    $scope.myFunc = function(complaint_id) {
+
+      var url = '/visual';
+      var form = $('<form action="' + url + '" method="post">' +
+        '<input type="hidden" name="complaint_id" value="' + complaint_id + '" />' +
+        '</form>');
+      $('body').append(form);
+      form.submit();
+
+    };
+
+    $scope.myFuncDelete = function(complaint_id) {
+
+      var url = '/deleteComplaint';
+      var form = $('<form action="' + url + '" method="post">' +
+        '<input type="hidden" name="complaint_id" value="' + complaint_id + '" />' +
+        '</form>');
+      $('body').append(form);
+      form.submit();
+
+    };
+  });
+
+
+</script>
+
+
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
